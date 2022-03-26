@@ -41,4 +41,19 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(page).to have_content(adventurer_2.level)
     expect(page).to have_content(adventurer_2.alive)
   end
+
+  it 'User Story 6' do
+    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
+    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
+    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
+    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+    # When I visit the parent index,
+    visit '/parties'
+    # I see that records are ordered by most recently created first
+    expect(page.text.index(party_2.name)).to be < page.text.index(party_1.name)
+    # And next to each of the records I see when it was created
+    expect(page).to have_content(party_1.created_at)
+    expect(page).to have_content(party_2.created_at)
+    expect(page.text.index(party_2.created_at)).to be < page.text.index(party_1.created_at)
+  end
 end
