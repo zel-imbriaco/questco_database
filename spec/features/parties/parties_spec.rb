@@ -66,4 +66,13 @@ RSpec.describe '/parties endpoint', type: :feature do
     # I see a count of the number of children associated with this parent
     expect(page).to have_content("Adventurer Count: 2")
   end
+
+  it 'User Story 9' do
+
+    visit '/parties'
+    expect(page).to have_link('Parties Index', href: '/parties')
+    visit '/adventurers'
+    expect(page).to have_link('Parties Index', href: '/parties')
+  end
+
 end
