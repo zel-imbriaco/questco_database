@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Party.destroy_all
+
+sleep(1)
+
+party_1 = Party.create(name: "Vox Machina", rank: 1, active: true)
+party_2 = Party.create(name: "The Mighty Nein", rank: 2, active: true)
+party_3 = Party.create(name: "Bell's Helles", rank: 3, active: true)
