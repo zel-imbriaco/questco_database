@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   
   # /adventurers routes
   get '/adventurers', to: 'adventurers#index'
+  get '/adventurers/:id', to: 'adventurers#show'
 end

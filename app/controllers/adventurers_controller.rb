@@ -3,4 +3,9 @@ class AdventurersController < ApplicationController
     @adventurers = Adventurer.all
     @parties = Party.all
   end
+
+  def show
+    @adventurer = Adventurer.find(params[:id])
+    @party = Party.find(@adventurer.party_id)
+  end
 end
