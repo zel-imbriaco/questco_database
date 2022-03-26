@@ -5,6 +5,7 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
+    @adventurers = Adventurer.where(party_id: @party.id).count
   end
 
   def adventurers

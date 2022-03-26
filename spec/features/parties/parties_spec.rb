@@ -62,7 +62,7 @@ RSpec.describe '/parties endpoint', type: :feature do
     adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
     adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
     # When I visit a parent's show page
-    visit "/parties/#{party_1}"
+    visit "/parties/#{party_1.id}"
     # I see a count of the number of children associated with this parent
     expect(page).to have_content("Adventurer Count: 2")
   end
