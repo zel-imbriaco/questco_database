@@ -1,0 +1,9 @@
+<h1>Adventurers</h1>
+
+<% @adventurers.each do |adventurer| %>
+  <h2><%= adventurer.name %></h2>
+  <h3><%= @parties.find(adventurer.party_id).name %></h3>
+  <h3><%= adventurer.level %></h3>
+  <h3><%= adventurer.alive %></h3>
+<% end %>
+
