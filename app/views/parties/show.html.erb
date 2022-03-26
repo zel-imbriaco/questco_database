@@ -1,0 +1,5 @@
+<h1><%= @party.name %></h1>
+<h2>Rank: <%= @party.rank %></h2>
+<h2>Active: <%= @party.active%></h2>
+<h3>Adventurer Count: <%= @adventurers %></h2>
+<h3>Adventurers: <%= link_to "Link", "/parties/#{@party.id}/adventurers" %></h3>
