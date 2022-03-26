@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe '/parties endpoint', type: :feature do
 
   it 'Returns all party names' do
-    # party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
+    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
 
     # When I visit '/parents'
     visit '/parties'
