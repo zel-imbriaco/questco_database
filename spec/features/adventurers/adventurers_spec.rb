@@ -33,4 +33,14 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     expect(page).to have_content(adventurer_2.alive)
     expect(page).to have_content(party_1.name)
   end
+
+  it 'User Story 8' do
+    # When I visit any page on the site
+    # Then I can see a link to the /adventurers endpoint named 'Adventurer Index'
+    visit '/parties'
+    expect(page).to have_link('Adventurers Index', href: '/adventurers')
+    visit '/adventurers'
+    expect(page).to have_link('Adventurers Index', href: '/adventurers')
+
+  end
 end
