@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # /parties routes
   get '/parties', to: 'parties#index'
   get '/parties/:id', to: 'parties#show'
+  get '/parties/:id/adventurers', to: 'parties#adventurers'
   
   # /adventurers routes
   get '/adventurers', to: 'adventurers#index'
