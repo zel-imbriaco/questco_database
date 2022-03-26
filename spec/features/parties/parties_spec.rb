@@ -4,7 +4,7 @@ RSpec.describe '/parties endpoint', type: :feature do
 
   it 'User Story 1' do
     party_1 = Party.create(name: "The Mighty Nein", rank: 2, active: true)
-    party_2 = Party.create(name: "Vox Machina", rank: 1, active: true)
+    party_2 = Party.create(name: "Vox Machina", rank: 1, active: false)
 
     # When I visit '/parents'
     visit '/parties'
