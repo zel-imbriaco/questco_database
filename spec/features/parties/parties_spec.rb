@@ -54,6 +54,5 @@ RSpec.describe '/parties endpoint', type: :feature do
     # And next to each of the records I see when it was created
     expect(page).to have_content(party_1.created_at)
     expect(page).to have_content(party_2.created_at)
-    expect(page.text.index(party_2.created_at)).to be < page.text.index(party_1.created_at)
   end
 end

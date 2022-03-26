@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
   def index
-    @parties = Party.all
+    @parties = Party.order(created_at: :desc)
   end
 
   def show
