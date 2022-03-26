@@ -68,11 +68,22 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 9' do
-
+    # When I visit any page on the site
+    # Then I see a link at the top of the page that takes me to the Parent Index
     visit '/parties'
     expect(page).to have_link('Parties Index', href: '/parties')
     visit '/adventurers'
     expect(page).to have_link('Parties Index', href: '/parties')
   end
 
+  it 'User Story 10' do
+    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
+    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
+    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
+    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+    # When I visit a parent show page ('/parents/:id')
+    visit "/parties/#{party_1.id}"
+    # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+    expect(page).to have_link("Link", href: "/parties/#{party_1.id}/adventurers")
+  end
 end

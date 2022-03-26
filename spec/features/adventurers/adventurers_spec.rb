@@ -41,6 +41,5 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     expect(page).to have_link('Adventurers Index', href: '/adventurers')
     visit '/adventurers'
     expect(page).to have_link('Adventurers Index', href: '/adventurers')
-
   end
 end
