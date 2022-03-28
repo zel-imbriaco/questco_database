@@ -5,6 +5,6 @@
   <%= form.text_field :rank, value: @party.rank %>
   <br />
   <%= form.label :active %>
-  <%= form.check_box :active %>
+  <%= form.check_box :active, value: @party.active %>
   <%= form.submit "Update Party" %>
 <% end %>

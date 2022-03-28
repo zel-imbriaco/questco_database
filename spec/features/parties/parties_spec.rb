@@ -119,7 +119,7 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(current_path).to eq("/parties/#{party_1.id}/edit")
     # When I fill out the form with updated information
     fill_in 'Name', with: "The Kings' Guard"
-    check 'Active'
+    uncheck 'Active'
     # And I click the button to submit the form
     click_on 'Update Party'
     # Then a `PATCH` request is sent to '/parents/:id',

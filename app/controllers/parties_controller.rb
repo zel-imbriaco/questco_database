@@ -22,7 +22,6 @@ class PartiesController < ApplicationController
 
   def update
     @party = Party.find(params[:id])
-    binding.pry
     Party.update(@party.id, party_params)
     redirect_to "/parties/#{@party.id}"
   end
