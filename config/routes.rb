@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/parties/new', to: 'parties#new'
   get '/parties/:id', to: 'parties#show'
   get '/parties/:id/adventurers', to: 'parties#adventurers'
+  get '/parties/:id/edit', to: 'parties#edit'
+  patch '/parties/:id', to: 'parties#update'
   post '/parties', to: 'parties#create'
   
   # /adventurers routes

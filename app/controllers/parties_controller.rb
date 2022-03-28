@@ -16,8 +16,18 @@ class PartiesController < ApplicationController
     @adventurers = Adventurer.where(party_id: @party.id).all
   end
 
-  def create
+  def edit
+    @party = Party.find(params[:id])
+  end
+
+  def update
+    @party = Party.find(params[:id])
     binding.pry
+    Party.update(@party.id, party_params)
+    redirect_to "/parties/#{@party.id}"
+  end
+
+  def create
     Party.create(party_params)
     redirect_to '/parties'
   end
