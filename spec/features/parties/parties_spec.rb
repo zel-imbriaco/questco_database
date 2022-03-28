@@ -86,4 +86,25 @@ RSpec.describe '/parties endpoint', type: :feature do
     # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
     expect(page).to have_link("Link", href: "/parties/#{party_1.id}/adventurers")
   end
+
+  it 'User Story 11' do
+    # When I visit the Parent Index page
+    visit "/parties"
+    # Then I see a link to create a new Parent record, "New Parent"
+    # When I click this link
+    click_link "New Party"
+    # Then I am taken to '/parents/new' where I  see a form for a new parent record
+    expect(current_path).to eq("/parties/new")
+    # When I fill out the form with a new parent's attributes:
+    fill_in 'Name', with: 'The Answer'
+    fill_in 'Rank', with: '4'
+    check 'Active'
+    # And I click the button "Create Parent" to submit the form
+    click_on 'Create Party'
+    # Then a `POST` request is sent to the '/parents' route,
+    # a new parent record is created,
+    # and I am redirected to the Parent Index page where I see the new Parent displayed.
+    expect(current_path).to eq("/parties")
+    expect(page).to have_content("The Answer")
+  end
 end
