@@ -1,3 +1,4 @@
 <% @parties.each do |party| %>
   <h3><%= party.name %> <%= party.created_at %></h3>
 <% end %>
+<%= link_to 'New Party', '/parties/new' %>
