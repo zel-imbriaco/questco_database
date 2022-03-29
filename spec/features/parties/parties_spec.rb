@@ -143,4 +143,18 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(current_path).to eq("/parties/#{party_1.id}/edit")
     expect(page).to have_button("Update Party")
   end
+
+  it 'User Story 18' do
+    # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+    visit "/parties/#{party_1.id}/adventurers"
+    # Next to every child, I see a link to edit that child's info
+    expect(page).to have_link(nil, href: "/adventurers/#{adventurer_1.id}/edit")
+    expect(page).to have_link(nil, href: "/adventurers/#{adventurer_2.id}/edit")
+    expect(page).to have_link(nil, href: "/adventurers/#{adventurer_3.id}/edit")
+    # When I click the link
+    click_link "Edit Adventurer", href: "/adventurers/#{adventurer_2.id}/edit"
+    # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
+    expect(current_path).to eq("/adventurers/#{adventurer_2.id}/edit")
+    expect(page).to have_button("Update Adventurer")
+  end
 end

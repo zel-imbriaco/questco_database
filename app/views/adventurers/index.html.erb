@@ -4,5 +4,6 @@
   <h2><%= adventurer.name %></h2>
   <h3>Level <%= adventurer.level %></h3>
   <h3>Alive: <%= adventurer.alive %></h3>
+  <%= link_to 'Edit Adventurer', "/adventurers/#{adventurer.id}/edit" %>
 <% end %>
 

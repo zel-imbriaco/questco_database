@@ -96,7 +96,6 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     # Next to every child, I see a link to edit that child's info
     expect(page).to have_link(nil, href: "/adventurers/#{adventurer_1.id}/edit")
     expect(page).to have_link(nil, href: "/adventurers/#{adventurer_2.id}/edit")
-    expect(page).to have_link(nil, href: "/adventurers/#{adventurer_3.id}/edit")
     # When I click the link
     click_link "Edit Adventurer", href: "/adventurers/#{adventurer_2.id}/edit"
     # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
