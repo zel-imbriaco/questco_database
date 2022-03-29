@@ -2,9 +2,13 @@ require 'rails_helper'
 
 RSpec.describe '/parties endpoint', type: :feature do
 
+  party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
+  party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
+  party_3 = Party.create(name: "The Answer", rank: 4, active: true)
+  adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
+  adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+
   it 'User Story 1' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 2, active: true)
-    party_2 = Party.create(name: "Vox Machina", rank: 1, active: false)
 
     # When I visit '/parents'
     visit '/parties'
@@ -14,8 +18,6 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 2' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 2, active: true)
-    party_2 = Party.create(name: "Vox Machina", rank: 1, active: true)
 
     # When I visit '/parents/:id'
     visit "/parties/#{party_1.id}"
@@ -27,10 +29,7 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 5' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
-    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
-    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+
     # When I visit '/parents/:parent_id/child_table_name'
     visit "/parties/#{party_1.id}/adventurers"
     # Then I see each Child that is associated with that Parent with each Child's attributes:
@@ -43,10 +42,7 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 6' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
-    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
-    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+
     # When I visit the parent index,
     visit '/parties'
     # I see that records are ordered by most recently created first
@@ -57,10 +53,7 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 7' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
-    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
-    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+
     # When I visit a parent's show page
     visit "/parties/#{party_1.id}"
     # I see a count of the number of children associated with this parent
@@ -77,10 +70,7 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 10' do
-    party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
-    party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
-    adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-    adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+
     # When I visit a parent show page ('/parents/:id')
     visit "/parties/#{party_1.id}"
     # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
@@ -109,14 +99,13 @@ RSpec.describe '/parties endpoint', type: :feature do
   end
 
   it 'User Story 12' do
-    party_1 = Party.create(name: "The Answer", rank: 4, active: true)
     # When I visit a parent show page
-    visit "/parties/#{party_1.id}"
+    visit "/parties/#{party_3.id}"
     # Then I see a link to update the parent "Update Parent"
     # When I click the link "Update Parent"
     click_link "Edit Party Info"
     # Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
-    expect(current_path).to eq("/parties/#{party_1.id}/edit")
+    expect(current_path).to eq("/parties/#{party_3.id}/edit")
     # When I fill out the form with updated information
     fill_in 'Name', with: "The Kings' Guard"
     # And I click the button to submit the form
@@ -124,7 +113,7 @@ RSpec.describe '/parties endpoint', type: :feature do
     # Then a `PATCH` request is sent to '/parents/:id',
     # the parent's info is updated,
     # and I am redirected to the Parent's Show page where I see the parent's updated info
-    expect(current_path).to eq("/parties/#{party_1.id}")
+    expect(current_path).to eq("/parties/#{party_3.id}")
     expect(page).to have_content("The Kings' Guard")
   end
 end
