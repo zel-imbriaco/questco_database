@@ -70,8 +70,8 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     click_link "Update Adventurer"
     # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
     expect(current_path).to eq("/adventurers/#{adventurer_2.id}/edit")
-    fill_in "Name", "Kingsley Tealeaf"
-    fill_in "Level", 9
+    fill_in "Name", with: "Kingsley Tealeaf"
+    fill_in "Level", with: 9
     check "Alive"
     # When I click the button to submit the form "Update Child"
     click_on "Update Adventurer"

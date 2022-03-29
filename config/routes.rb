@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   # /adventurers routes
   get '/adventurers', to: 'adventurers#index'
   get '/adventurers/:id', to: 'adventurers#show'
+  get '/adventurers/:id/edit', to: 'adventurers#edit'
+  patch '/adventurers/:id', to: 'adventurers#update'
   post '/adventurers', to: 'adventurers#create'
 end

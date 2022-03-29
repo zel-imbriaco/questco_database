@@ -1,10 +1,11 @@
 <%= form_with url: "/adventurers/#{@adventurer.id}", method: :patch, local: true do |form| %>
+  <%= form.hidden_field :party_id, value: @adventurer.party_id %>
   <%= form.label :name %>
   <%= form.text_field :name, value: @adventurer.name%>
   <%= form.label :level %>
-  <%= form.text_field :level, value: @party.level %>
+  <%= form.text_field :level, value: @adventurer.level %>
   <br />
   <%= form.label :alive %>
-  <%= form.check_box :alive, value: @party.alive %>
+  <%= form.check_box :alive, value: @adventurer.alive %>
   <%= form.submit "Update Adventurer" %>
 <% end %>
