@@ -1,6 +1,6 @@
 class AdventurersController < ApplicationController
   def index
-    @adventurers = Adventurer.all
+    @adventurers = Adventurer.where(alive: true)
     @parties = Party.all
   end
 

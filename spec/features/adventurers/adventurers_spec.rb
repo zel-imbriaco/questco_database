@@ -5,7 +5,8 @@ RSpec.describe '/adventurers endpoint', type: :feature do
   party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
   party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
   adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-  adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+  adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: true, party_id: party_1.id)
+  adventurer_3 = Adventurer.create(name: "Bertrand Bell", level: 4, alive: false, party_id: party_2.id)
 
   it 'User Story 3' do
     # When I visit '/child_table_name'
@@ -80,5 +81,12 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     # and I am redirected to the Child Show page where I see the Child's updated information
     expect(current_path).to eq("/adventurers/#{adventurer_2.id}")
     expect(page).to have_content("Kingsley Tealeaf")
+  end
+
+  it 'User Story 15' do
+    # When I visit the child index
+    visit '/adventurers'
+    # Then I only see records where the boolean column is `true`
+    expect(page).to have_no_content("Bertrand Bell")
   end
 end
