@@ -138,8 +138,9 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(page).to have_link(nil, href: "/parties/#{party_2.id}/edit")
     expect(page).to have_link(nil, href: "/parties/#{party_3.id}/edit")
     # When I click the link
-    click_link "Edit Party", { href: "/parties/#{party_1.id}/edit" }
+    click_link "Edit Party", href: "/parties/#{party_1.id}/edit" 
     # I should be taken to that parents edit page where I can update its information just like in User Story 4
     expect(current_path).to eq("/parties/#{party_1.id}/edit")
+    expect(page).to have_button("Update Party")
   end
 end
