@@ -5,4 +5,4 @@
   <h3>Alive: <%= adventurer.alive %></h3>
 <% end %>
 <%= link_to 'Create New Adventurer', "/parties/#{@party.id}/adventurers/new" %>
-<%= link_to 'Sort Adventurers', "/parties/#{@party.id}/adventurers" %>
+<%= link_to 'Sort Adventurers', :sort => :name %>

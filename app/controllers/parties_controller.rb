@@ -13,7 +13,7 @@ class PartiesController < ApplicationController
 
   def adventurers
     @party = Party.find(params[:id])
-    @adventurers = Adventurer.where(party_id: @party.id).all
+    @adventurers = Adventurer.where(party_id: @party.id).order(params[:sort]).all
   end
 
   def edit
