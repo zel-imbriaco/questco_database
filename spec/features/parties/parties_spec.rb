@@ -129,4 +129,17 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(current_path).to eq("/parties/#{party_1.id}/adventurers")
     expect(page.text.index(adventurer_2.name)).to be > page.text.index(adventurer_3.name)
   end
+
+  it 'User Story 17' do
+    # When I visit the parent index page
+    visit '/parties'
+    # Next to every parent, I see a link to edit that parent's info
+    expect(page).to have_link(nil, href: "/parties/#{party_1.id}/edit")
+    expect(page).to have_link(nil, href: "/parties/#{party_2.id}/edit")
+    expect(page).to have_link(nil, href: "/parties/#{party_3.id}/edit")
+    # When I click the link
+    click_link "Edit Party", { href: "/parties/#{party_1.id}/edit" }
+    # I should be taken to that parents edit page where I can update its information just like in User Story 4
+    expect(current_path).to eq("/parties/#{party_1.id}/edit")
+  end
 end
