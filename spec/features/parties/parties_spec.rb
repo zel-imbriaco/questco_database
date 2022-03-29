@@ -7,6 +7,7 @@ RSpec.describe '/parties endpoint', type: :feature do
   party_3 = Party.create(name: "The Answer", rank: 4, active: true)
   adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
   adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: false, party_id: party_1.id)
+  adventurer_3 = Adventurer.create(name: "Lucien", level: 9, alive: true, party_id: party_1.id)
 
   it 'User Story 1' do
 
@@ -57,7 +58,7 @@ RSpec.describe '/parties endpoint', type: :feature do
     # When I visit a parent's show page
     visit "/parties/#{party_1.id}"
     # I see a count of the number of children associated with this parent
-    expect(page).to have_content("Adventurer Count: 2")
+    expect(page).to have_content("Adventurer Count: 3")
   end
 
   it 'User Story 9' do
@@ -115,5 +116,17 @@ RSpec.describe '/parties endpoint', type: :feature do
     # and I am redirected to the Parent's Show page where I see the parent's updated info
     expect(current_path).to eq("/parties/#{party_3.id}")
     expect(page).to have_content("The Kings' Guard")
+  end
+
+  it 'User Story 16' do
+    # When I visit the Parent's children Index Page
+    visit "/parties/#{party_1.id}/adventurers"
+    # Then I see a link to sort children in alphabetical order
+    expect(page).to have_link("Sort Adventurers")
+    # When I click on the link
+    click_link "Sort Adventurers"
+    # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    expect(current_path).to eq("/parties/#{party_1.id}/adventurers")
+    expect(page.text.index(adventurer_2.name)).to be > page.text.index(adventurer_3.name)
   end
 end
