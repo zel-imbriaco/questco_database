@@ -19,7 +19,6 @@ class AdventurersController < ApplicationController
   end
 
   private
-  
   def adventurer_params
     params.permit(:name, :level, :alive, :party_id)
   end 
