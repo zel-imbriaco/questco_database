@@ -2,3 +2,4 @@
 <h2><%= @party.name %></h2>
 <h3>Level <%= @adventurer.level %></h3>
 <h3>Alive: <%= @adventurer.alive %></h3>
+<%= link_to "Update Adventurer", "/adventurer/#{@adventurer.id}/edit"%>

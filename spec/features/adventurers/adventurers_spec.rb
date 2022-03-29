@@ -61,4 +61,24 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     expect(current_path).to eq("/parties/#{party_1.id}/adventurers")
     expect(page).to have_content("Jester Lavore")
   end
+
+  it 'User Story 14' do
+    # When I visit a Child Show page
+    visit "/adventurers/#{adventurer_2.id}"
+    # Then I see a link to update that Child "Update Child"
+    # When I click the link
+    click_link "Update Adventurer"
+    # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+    expect(current_path).to eq("/adventurers/#{adventurer_2.id}/edit")
+    fill_in "Name", "Kingsley Tealeaf"
+    fill_in "Level", 9
+    check "Alive"
+    # When I click the button to submit the form "Update Child"
+    click_on "Update Adventurer"
+    # Then a `PATCH` request is sent to '/child_table_name/:id',
+    # the child's data is updated,
+    # and I am redirected to the Child Show page where I see the Child's updated information
+    expect(current_path).to eq("/adventurers/#{adventurer_2.id}")
+    expect(page).to have_content("Kingsley Tealeaf")
+  end
 end
