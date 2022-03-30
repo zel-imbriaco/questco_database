@@ -29,6 +29,11 @@ class AdventurersController < ApplicationController
     redirect_to "/parties/#{adventurer_params[:party_id]}/adventurers"
   end
 
+  def destroy
+    Adventurer.destroy(params[:id])
+    redirect_to "/adventurers"
+  end
+
   private
   def adventurer_params
     params.permit(:name, :level, :alive, :party_id)

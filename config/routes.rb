@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get '/adventurers/:id/edit', to: 'adventurers#edit'
   patch '/adventurers/:id', to: 'adventurers#update'
   post '/adventurers', to: 'adventurers#create'
+  delete '/adventurers/:id', to: 'adventurers#destroy'
 end

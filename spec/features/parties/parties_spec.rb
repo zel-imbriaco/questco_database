@@ -162,7 +162,6 @@ RSpec.describe '/parties endpoint', type: :feature do
     # When I visit a parent show page
     visit "/parties/#{party_1.id}"
     # Then I see a link to delete the parent
-    expect(page).to have_link("Delete Party")
     # When I click the link "Delete Parent"
     click_link "Delete Party"
     # Then a 'DELETE' request is sent to '/parents/:id',

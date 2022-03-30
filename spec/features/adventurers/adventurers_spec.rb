@@ -102,4 +102,17 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     expect(current_path).to eq("/adventurers/#{adventurer_2.id}/edit")
     expect(page).to have_button("Update Adventurer")
   end
+
+  it 'User Story 20' do
+    # When I visit a child show page
+    visit "/adventurers/#{adventurer_1.id}"
+    # Then I see a link to delete the child "Delete Child"
+    # When I click the link
+    click_link "Delete Adventurer"
+    # Then a 'DELETE' request is sent to '/child_table_name/:id',
+    # the child is deleted,
+    # and I am redirected to the child index page where I no longer see this child
+    expect(current_path).to eq("/adventurers")
+    expect(page).to have_no_content("Vex'ahlia")
+  end
 end
