@@ -13,7 +13,11 @@ class PartiesController < ApplicationController
 
   def adventurers
     @party = Party.find(params[:id])
-    @adventurers = Adventurer.where(party_id: @party.id).order(params[:sort]).all
+    if params[:level]
+      @adventurers = Adventurer.where('party_id = :party_id AND level > :level', :party_id => params[:id], :level => params[:level]).order(params[:sort]).all
+    else
+      @adventurers = Adventurer.where(party_id: @party.id).order(params[:sort]).all
+    end
   end
 
   def edit

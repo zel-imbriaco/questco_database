@@ -7,3 +7,7 @@
 <% end %>
 <%= link_to 'Create New Adventurer', "/parties/#{@party.id}/adventurers/new" %>
 <%= link_to 'Sort Adventurers', :sort => :name %>
+<%= form_with url: "/parties/#{@party.id}/adventurers", method: :get, local: true do |form| %>
+  <%= form.text_field :level, { value: 0 } %>
+  <%= form.submit "Show Adventurers with higher level than" %>
+<% end %>

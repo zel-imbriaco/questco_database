@@ -5,7 +5,7 @@ RSpec.describe '/adventurers endpoint', type: :feature do
   party_1 = Party.create(name: "Vox Machina", rank: 1, active: true)
   party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
   adventurer_1 = Adventurer.create(name: "Vex'ahlia", level: 17, alive: true, party_id: party_1.id)
-  adventurer_2 = Adventurer.create(name: "Percy", level: 17, alive: true, party_id: party_1.id)
+  adventurer_2 = Adventurer.create(name: "Percy", level: 15, alive: true, party_id: party_1.id)
   adventurer_3 = Adventurer.create(name: "Bertrand Bell", level: 4, alive: false, party_id: party_2.id)
 
   it 'User Story 3' do
@@ -114,5 +114,17 @@ RSpec.describe '/adventurers endpoint', type: :feature do
     # and I am redirected to the child index page where I no longer see this child
     expect(current_path).to eq("/adventurers")
     expect(page).to have_no_content("Vex'ahlia")
+  end
+
+  it 'User Story 21' do
+    # When I visit the Parent's children Index Page
+    visit "parties/#{party_1.id}/adventurers"
+    # I see a form that allows me to input a number value
+    # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+    fill_in :level, with: 16
+    click_on "Show Adventurers with higher level than"
+    # Then I am brought back to the current index page with only the records that meet that threshold shown.
+    expect(current_path).to eq("/parties/#{party_1.id}/adventurers")
+    expect(page).to have_no_content(15)
   end
 end
