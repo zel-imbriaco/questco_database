@@ -177,7 +177,7 @@ RSpec.describe '/parties endpoint', type: :feature do
     # When I visit the parent index page
     visit '/parties'
     # Next to every parent, I see a link to delete that parent
-    expect(page).to have_link(nil, href: "/parties/#{@party_2.id}/")
+    expect(page).to have_link("Delete Party", href: "/parties/#{@party_2.id}")
     # When I click the link
     click_link "Delete Party", href: "/parties/#{@party_2.id}"
     # I am returned to the Parent Index Page where I no longer see that parent
