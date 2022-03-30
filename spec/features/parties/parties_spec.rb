@@ -184,4 +184,16 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(current_path).to eq("/parties")
     expect(page).to have_no_content("Bell's Helles")
   end
+
+  it 'User Story 23' do
+    # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+    visit "/parties/#{@party_1.id}/adventurers"
+    # Next to every child, I see a link to delete that child
+    expect(page).to have_link("Delete Adventurer", href: "/adventurers/#{@adventurer_1.id}")
+    # When I click the link
+    click_link "Delete Adventurer", href: "/adventurers/#{@adventurer_1.id}"
+    # I should be taken to the `child_table_name` index page where I no longer see that child
+    expect(current_path).to eq("/adventurers")
+    expect(page).to have_no_content("Beauregard Lionett")
+  end
 end
