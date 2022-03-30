@@ -3,3 +3,5 @@
 <h2>Active: <%= @party.active%></h2>
 <h3>Adventurer Count: <%= @adventurers %></h2>
 <h3>Adventurers: <%= link_to "Link", "/parties/#{@party.id}/adventurers" %></h3>
+<%= link_to 'Edit Party Info', "/parties/#{@party.id}/edit" %>
+<%= link_to "Delete Party", "/parties/#{@party.id}",  method: "delete" %>

@@ -1,0 +1,10 @@
+<%= form_with url: '/parties', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :rank %>
+  <%= form.text_field :rank %>
+  <br />
+  <%= form.label :active %>
+  <%= form.check_box :active %>
+  <%= form.submit "Create Party" %>
+<% end %>

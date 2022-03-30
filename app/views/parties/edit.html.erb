@@ -1,0 +1,10 @@
+<%= form_with url: "/parties/#{@party.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, value: @party.name%>
+  <%= form.label :rank %>
+  <%= form.text_field :rank, value: @party.rank %>
+  <br />
+  <%= form.label :active %>
+  <%= form.check_box :active, value: @party.active %>
+  <%= form.submit "Update Party" %>
+<% end %>

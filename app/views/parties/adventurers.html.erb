@@ -3,4 +3,12 @@
   <h2><%= adventurer.name %></h2>
   <h3>Level <%= adventurer.level %></h3>
   <h3>Alive: <%= adventurer.alive %></h3>
+  <%= link_to 'Edit Adventurer', "/adventurers/#{adventurer.id}/edit" %>
+  <%= link_to 'Delete Adventurer', "/adventurers/#{adventurer.id}", method: "delete" %>
+<% end %>
+<%= link_to 'Create New Adventurer', "/parties/#{@party.id}/adventurers/new" %>
+<%= link_to 'Sort Adventurers', :sort => :name %>
+<%= form_with url: "/parties/#{@party.id}/adventurers", method: :get, local: true do |form| %>
+  <%= form.text_field :level, { value: 0 } %>
+  <%= form.submit "Show Adventurers with higher level than" %>
 <% end %>
