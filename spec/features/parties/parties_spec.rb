@@ -157,4 +157,18 @@ RSpec.describe '/parties endpoint', type: :feature do
     expect(current_path).to eq("/adventurers/#{adventurer_2.id}/edit")
     expect(page).to have_button("Update Adventurer")
   end
+
+  it 'User Story 19' do
+    # When I visit a parent show page
+    visit "/parties/#{party_1.id}"
+    # Then I see a link to delete the parent
+    expect(page).to have_link("Delete Party")
+    # When I click the link "Delete Parent"
+    click_link "Delete Party"
+    # Then a 'DELETE' request is sent to '/parents/:id',
+    # the parent is deleted, and all child records are deleted
+    # and I am redirected to the parent index page where I no longer see this parent
+    expect(current_path).to eq("/parties")
+    expect(page).to have_no_content("The Mighty Nein")
+  end
 end

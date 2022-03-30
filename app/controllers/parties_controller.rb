@@ -31,6 +31,11 @@ class PartiesController < ApplicationController
     redirect_to '/parties'
   end
 
+  def destroy
+    Party.destroy(params[:id])
+    redirect_to '/parties'
+  end
+
   private
   def party_params
     params.permit(:name, :rank, :active)
