@@ -32,6 +32,7 @@ class PartiesController < ApplicationController
   end
 
   def destroy
+    Adventurer.where(party_id: params[:id]).destroy_all
     Party.destroy(params[:id])
     redirect_to '/parties'
   end

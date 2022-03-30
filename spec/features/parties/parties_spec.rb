@@ -87,8 +87,8 @@ RSpec.describe '/parties endpoint', type: :feature do
     # Then I am taken to '/parents/new' where I  see a form for a new parent record
     expect(current_path).to eq("/parties/new")
     # When I fill out the form with a new parent's attributes:
-    fill_in 'Name', with: 'The Answer'
-    fill_in 'Rank', with: '4'
+    fill_in 'Name', with: 'Something New'
+    fill_in 'Rank', with: '7'
     check 'Active'
     # And I click the button "Create Parent" to submit the form
     click_on 'Create Party'

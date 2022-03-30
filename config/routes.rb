@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/parties/:id/edit', to: 'parties#edit'
   patch '/parties/:id', to: 'parties#update'
   post '/parties', to: 'parties#create'
-  delete '/parties/:id', to: 'parties#destroy'
+  delete '/parties/:id/', to: 'parties#destroy'
   
   # /adventurers routes
   get '/adventurers', to: 'adventurers#index'

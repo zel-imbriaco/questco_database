@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe '/adventurers endpoint', type: :feature do 
 
-  party_1 = Party.create(name: "The Mighty Nein", rank: 1, active: true)
+  party_1 = Party.create(name: "Vox Machina", rank: 1, active: true)
   party_2 = Party.create(name: "Bell's Helles", rank: 2, active: false)
-  adventurer_1 = Adventurer.create(name: "Beauregard Lionett", level: 9, alive: true, party_id: party_1.id)
-  adventurer_2 = Adventurer.create(name: "Mollymauk Tealeaf", level: 5, alive: true, party_id: party_1.id)
+  adventurer_1 = Adventurer.create(name: "Vex'ahlia", level: 17, alive: true, party_id: party_1.id)
+  adventurer_2 = Adventurer.create(name: "Percy", level: 17, alive: true, party_id: party_1.id)
   adventurer_3 = Adventurer.create(name: "Bertrand Bell", level: 4, alive: false, party_id: party_2.id)
 
   it 'User Story 3' do
